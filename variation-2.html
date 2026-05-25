@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Método Controle Máximo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Slab:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      -webkit-text-size-adjust: 100%;
+      --wp--preset--aspect-ratio--square: 1;
+      --wp--preset--aspect-ratio--4-3: 4/3;
+      --wp--preset--aspect-ratio--3-4: 3/4;
+      --wp--preset--aspect-ratio--3-2: 3/2;
+      --wp--preset--aspect-ratio--2-3: 2/3;
+      --wp--preset--aspect-ratio--16-9: 16/9;
+      --wp--preset--aspect-ratio--9-16: 9/16;
+      --wp--preset--color--black: #000000;
+      --wp--preset--color--white: #ffffff;
+      --direction-multiplier: 1;
+      --page-title-display: block;
+      --swiper-theme-color: #007aff;
+      --swiper-navigation-size: 44px;
+      --wp--style--global--content-size: 800px;
+      --wp--style--global--wide-size: 1200px;
+      --wp--style--block-gap: 24px;
+      --e-global-color-primary: #6EC1E4;
+      --e-global-color-secondary: #54595F;
+      --e-global-color-text: #7A7A7A;
+      --e-global-color-accent: #61CE70;
+      --e-global-typography-primary-font-family: "Roboto";
+      --e-global-typography-primary-font-weight: 600;
+      --e-global-typography-secondary-font-family: "Roboto Slab";
+      --e-global-typography-secondary-font-weight: 400;
+      --e-global-typography-text-font-family: "Roboto";
+      --e-global-typography-text-font-weight: 400;
+      --e-global-typography-accent-font-family: "Roboto";
+      --e-global-typography-accent-font-weight: 500;
+      --green: #36bf4a;
+      --green-dark: #2aa53c;
+      --beige: #d8ad74;
+      --beige-soft: #e3c08d;
+      --brown: #835937;
+      --brown-dark: #654528;
+      --white: #ffffff;
+      --offwhite: #f7f7f7;
+      --lightgray: #efefef;
+      --text: #131313;
+      --muted: #5b4f45;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: "Roboto", Arial, sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: 336px;
+      background: #fff;
+    }
+
+    .topbar {
+      height: 14px;
+      background: var(--green);
+      color: #fff;
+      font-size: 6px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .topbar::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .hero {
+      position: relative;
+      padding: 20px 24px 28px;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 22%, rgba(244, 222, 189, 0.45) 0, rgba(244, 222, 189, 0) 20%),
+        radial-gradient(circle at 6% 76%, rgba(255, 248, 235, 0.35) 0, rgba(255, 248, 235, 0) 12%),
+        linear-gradient(180deg, #dcb37c 0%, #c3925e 48%, #855937 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 240, 220, 0.22);
+      opacity: 0.5;
+    }
+
+    .hero::before {
+      width: 220px;
+      height: 220px;
+      right: -80px;
+      top: 6px;
+    }
+
+    .hero::after {
+      width: 160px;
+      height: 160px;
+      left: -100px;
+      bottom: 18px;
+    }
+
+    .logo-kicker {
+      margin-bottom: 2px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .logo-main {
+      margin: 0;
+      font-family: "Roboto Slab", serif;
+      font-size: 19px;
+      line-height: 0.9;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .logo-sub {
+      margin-top: 1px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 16px auto 14px;
+      max-width: 286px;
+      font-size: 17px;
+      line-height: 1.14;
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .hero h1 .ink {
+      display: inline;
+      color: #0e0e0e;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0 3px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .video-frame {
+      position: relative;
+      width: 253px;
+      margin: 0 auto 14px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 0 2px rgba(212, 199, 174, 0.25), var(--shadow);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .video-frame img {
+      width: 100%;
+      height: auto;
+    }
+
+    .cta {
+      display: block;
+      width: 244px;
+      margin: 0 auto;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .wave-bottom {
+      position: relative;
+    }
+
+    .wave-bottom::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -18px;
+      height: 34px;
+      background: #fff;
+      border-top-left-radius: 50% 100%;
+      border-top-right-radius: 50% 100%;
+      z-index: 2;
+    }
+
+    .section-white {
+      position: relative;
+      background: #fff;
+      padding: 32px 0 0;
+    }
+
+    .section-title {
+      margin: 0 20px 14px;
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .section-title .chip {
+      background: var(--beige-soft);
+      padding: 0 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .feedback-wrap {
+      padding: 0 0 22px;
+      text-align: center;
+    }
+
+    .feedback-card {
+      width: 148px;
+      margin: 0 auto 12px;
+      padding: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #d8ad74;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .feedback-card img {
+      width: 100%;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 0 0 14px;
+    }
+
+    .dots span {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #d7d7d7;
+    }
+
+    .dots span.active {
+      background: #232323;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      padding: 0 12px 20px;
+      text-align: center;
+    }
+
+    .info-item {
+      color: var(--text);
+      font-size: 7px;
+      line-height: 1.25;
+    }
+
+    .info-icon {
+      font-size: 28px;
+      line-height: 1;
+      color: #d1a266;
+      margin-bottom: 7px;
+    }
+
+    .info-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .caramel-section {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 12px 26px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 85% 85%, rgba(255, 226, 185, 0.3) 0, rgba(255, 226, 185, 0) 24%),
+        linear-gradient(180deg, #d8ad74 0%, #cb9a63 45%, #8b603b 100%);
+    }
+
+    .caramel-section::before {
+      content: "";
+      position: absolute;
+      left: -3%;
+      right: -3%;
+      top: -18px;
+      height: 36px;
+      background: #fff;
+      border-bottom-left-radius: 50% 100%;
+      border-bottom-right-radius: 50% 100%;
+    }
+
+    .platform-visual {
+      position: relative;
+      z-index: 1;
+      width: 195px;
+      margin: 0 auto 22px;
+    }
+
+    .platform-title,
+    .brown-title {
+      margin: 0 20px 16px;
+      font-size: 15px;
+      line-height: 1.1;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      text-align: center;
+      color: #141414;
+    }
+
+    .platform-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    .platform-box {
+      min-height: 73px;
+      padding: 8px 8px 8px 14px;
+      border: 2px solid #8bfd34;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 7px;
+      line-height: 1.3;
+      position: relative;
+    }
+
+    .platform-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 9px;
+      font-weight: 900;
+      font-style: italic;
+    }
+
+    .platform-box::before {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      color: #8bfd34;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .modules {
+      padding: 40px 0 28px;
+      background: #fff;
+      position: relative;
+    }
+
+    .modules::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 28px;
+      background:
+        radial-gradient(circle at 10% 0, #ead6b8 0, #ead6b8 16px, transparent 17px),
+        radial-gradient(circle at 32% 0, #f4f4f4 0, #f4f4f4 17px, transparent 18px),
+        radial-gradient(circle at 54% 0, #ead6b8 0, #ead6b8 16px, transparent 17px),
+        radial-gradient(circle at 76% 0, #f4f4f4 0, #f4f4f4 17px, transparent 18px),
+        radial-gradient(circle at 94% 0, #ead6b8 0, #ead6b8 16px, transparent 17px);
+      background-repeat: no-repeat;
+    }
+
+    .modules-space {
+      height: 300px;
+    }
+
+    .benefits {
+      padding: 56px 12px 28px;
+    }
+
+    .benefits .section-title {
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .benefits-grid-3,
+    .benefits-grid-2 {
+      display: grid;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .benefits-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 18px;
+    }
+
+    .benefits-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 236px;
+      margin: 0 auto 18px;
+    }
+
+    .benefit {
+      color: #fff;
+      font-size: 8px;
+      line-height: 1.3;
+    }
+
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
+      margin: 0 auto 8px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .benefit strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .instructor {
+      position: relative;
+      padding: 32px 18px 24px;
+      background: #fff;
+    }
+
+    .instructor::before {
+      content: "";
+      position: absolute;
+      left: -2%;
+      right: -2%;
+      top: -26px;
+      height: 44px;
+      background: #fff;
+      border-top-left-radius: 50% 100%;
+      border-top-right-radius: 50% 100%;
+    }
+
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .portrait {
+      width: 114px;
+      height: 114px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      padding: 4px;
+      background: #fff;
+      border: 2px solid #202020;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .monogram {
+      text-align: center;
+      color: #272727;
+      line-height: 1;
+    }
+
+    .monogram .m {
+      font-family: "Roboto Slab", serif;
+      font-size: 58px;
+      line-height: 0.8;
+    }
+
+    .monogram .name {
+      display: block;
+      margin-top: 8px;
+      font-family: "Roboto Slab", serif;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .monogram .role {
+      display: block;
+      margin-top: 6px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+    }
+
+    .instructor-copy h2 {
+      margin: 0 0 10px;
+      color: #171717;
+      font-size: 14px;
+      line-height: 1.08;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .instructor-copy p {
+      margin: 0 0 8px;
+      color: #252525;
+      font-size: 8px;
+      line-height: 1.32;
+      text-align: center;
+    }
+
+    .separator-band {
+      height: 42px;
+      background:
+        radial-gradient(circle at 12% 0, #fff 0, #fff 18px, transparent 19px),
+        radial-gradient(circle at 46% 0, #fff 0, #fff 18px, transparent 19px),
+        radial-gradient(circle at 80% 0, #fff 0, #fff 18px, transparent 19px),
+        linear-gradient(180deg, #ddb47d 0%, #d6aa71 100%);
+    }
+
+    .secure {
+      padding: 18px 2px 18px;
+      background: linear-gradient(180deg, #d6aa71 0%, #7b5232 100%);
+    }
+
+    .secure-card {
+      margin: 0 auto;
+      width: 300px;
+      padding: 18px 16px 16px;
+      background: #fff;
+      border: 2px solid #dfd3bf;
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .payment-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .pay-pill,
+    .pay-logo {
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
+      background: #fff;
+      padding: 4px 3px;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1;
+      color: #666;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: #32bf57;
+      font-size: 10px;
+      font-weight: 900;
+      flex-wrap: wrap;
+    }
+
+    .kiwify {
+      font-size: 20px;
+      color: #30bf58;
+      font-weight: 900;
+    }
+
+    .lock {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: #69be42;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .secure-copy h2 {
+      margin: 0 0 8px;
+      color: #171717;
+      font-size: 16px;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .secure-copy p {
+      margin: 0;
+      color: #222;
+      font-size: 9px;
+      line-height: 1.3;
+    }
+
+    .secure-tail {
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 9px solid #7a5030;
+    }
+
+    .offer-section {
+      padding: 18px 0 24px;
+      background: #efefef;
+    }
+
+    .offer-card {
+      width: 160px;
+      margin: 0 auto;
+      padding: 16px 12px 12px;
+      border-radius: 4px;
+      border: 3px solid #2e2e2e;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .offer-kicker {
+      font-size: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1d1d1d;
+    }
+
+    .offer-brand {
+      margin: 2px 0 1px;
+      font-family: "Roboto Slab", serif;
+      font-size: 20px;
+      line-height: 0.88;
+      text-transform: uppercase;
+      color: #111;
+      font-weight: 900;
+    }
+
+    .offer-sub {
+      margin-bottom: 8px;
+      font-size: 8px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #222;
+    }
+
+    .offer-title {
+      margin: 0 0 10px;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: #171717;
+    }
+
+    .old-price {
+      color: #f04444;
+      font-size: 13px;
+      font-weight: 900;
+      text-decoration: line-through;
+    }
+
+    .offer-copy {
+      margin-top: 8px;
+      color: #151515;
+      font-size: 8px;
+      line-height: 1.25;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .offer-price {
+      margin: 2px 0;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 0.95;
+      font-weight: 900;
+    }
+
+    .offer-cash {
+      margin-bottom: 12px;
+      color: #62b74a;
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .mini-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+      color: #222;
+      font-size: 7px;
+      font-weight: 700;
+    }
+
+    .faq {
+      padding: 18px 0 18px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 233, 205, 0.34) 0, rgba(255, 233, 205, 0) 18%),
+        linear-gradient(180deg, #dcb37b 0%, #7a5231 100%);
+    }
+
+    .faq .section-title {
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .faq-list {
+      width: 300px;
+      margin: 0 auto;
+      border: 2px solid #d7cbc0;
+      border-radius: 4px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+      padding: 8px 10px;
+      background: #fff;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+    }
+
+    .faq-q {
+      color: #353535;
+      font-size: 8px;
+      font-weight: 900;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-q::before {
+      content: "−";
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .faq-a {
+      margin-top: 8px;
+      color: #6a6a6a;
+      font-size: 7px;
+      line-height: 1.4;
+    }
+
+    .cross-sell {
+      padding: 18px 0 0;
+      background: #fff;
+      text-align: center;
+    }
+
+    .cross-card {
+      width: 126px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">Curso Online</div>
+
+    <section class="hero wave-bottom">
+      <div class="logo-kicker">Método Controle</div>
+      <div class="logo-main">Máximo</div>
+      <div class="logo-sub">no molde f-1</div>
+
+      <h1>Aprenda o controle máximo de produto com o meu curso 100% prático de alongamento <span class="ink">no molde f-1!</span></h1>
+
+      <div class="video-frame">
+        <img src="assets/michael-hero-video.png" alt="Apresentação do Método Controle Máximo">
+      </div>
+
+      <a class="cta" href="https://michaellenail.com/controlemaximonomoldef1/">Quero me inscrever!</a>
+    </section>
+
+    <section class="section-white">
+      <div class="feedback-wrap">
+        <h2 class="section-title">Feedbacks de <span class="chip">alunas</span></h2>
+        <div class="feedback-card">
+          <img src="assets/michael-feedback-card.png" alt="Feedback de aluna">
+        </div>
+        <div class="dots" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span class="active"></span><span></span><span></span><span></span><span></span>
+        </div>
+        <a class="cta" href="https://michaellenail.com/controlemaximonomoldef1/">Quero me inscrever</a>
+      </div>
+
+      <h2 class="section-title">Informações do <span class="chip">curso!</span></h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🏅</div>
+          <strong>Com Certificado de Conclusão</strong>
+          <div>Certificado do curso após a conclusão das aulas.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📖</div>
+          <strong>Apostila de Apoio</strong>
+          <div>Material que facilita o estudo com o conteúdo e a prática.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🛠</div>
+          <strong>Suporte Total</strong>
+          <div>Você terá suporte total para tirar dúvidas caso sinta dificuldade.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🔗</div>
+          <strong>Grupo de links exclusivo</strong>
+          <div>Espaço com todos os links dos materiais indicados no curso.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🖥</div>
+          <strong>Acesso de 1 Ano</strong>
+          <div>Acesso de 1 ano ao curso e todas as atualizações.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="caramel-section">
+      <div class="platform-visual">
+        <img src="assets/michael-platform-mockup.png" alt="Aulas pela plataforma do Kiwify">
+      </div>
+
+      <h2 class="platform-title">Acesso pela plataforma do Kiwify!</h2>
+
+      <div class="platform-boxes">
+        <div class="platform-box">
+          <strong>Fácil Acessibilidade</strong>
+          <div>Plataforma disponível em formato de site WWW.KIWIFY.COM.BR ou APP KIWIFY.</div>
+        </div>
+        <div class="platform-box">
+          <strong>Disponível em qualquer dispositivo.</strong>
+          <div>App disponível em Android, IOS ou computador.</div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://michaellenail.com/controlemaximonomoldef1/">Quero me inscrever!</a>
+    </section>
+
+    <section class="modules">
+      <h2 class="section-title">Módulos do <span class="chip">curso!</span></h2>
+      <div class="modules-space"></div>
+      <div class="dots" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span class="active"></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <a class="cta" href="https://michaellenail.com/controlemaximonomoldef1/">Quero me inscrever</a>
+    </section>
+
+    <section class="caramel-section benefits">
+      <h2 class="section-title">Tudo o que você precisa! está aqui!</h2>
+      <div class="benefits-grid-3">
+        <div class="benefit">
+          <div class="benefit-icon">🎓</div>
+          <strong>Transformação no seu desenvolvimento Pessoal</strong>
+          <div>Eleve suas habilidades e conhecimento com técnicas profissionais.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">$</div>
+          <strong>Controle total sobre seus produtos</strong>
+          <div>Aprenda a controlar o uso, diminuir desperdício e reduzir custos.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">⏱</div>
+          <strong>Atendimento rápido e eficiente</strong>
+          <div>Reduza seu tempo de atendimento e aumente a produtividade.</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Aulas totalmente práticas e didáticas!</h2>
+      <div class="benefits-grid-2">
+        <div class="benefit">
+          <div class="benefit-icon">▶</div>
+          <strong>Aulas em Alta Definições</strong>
+          <div>Aulas em 4k com demonstrações detalhadas para acompanhar de perto.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <strong>Metodologia passo a passo</strong>
+          <div>Aprenda de forma estruturada com aulas divididas em etapas claras.</div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://michaellenail.com/controlemaximonomoldef1/">Quero me inscrever</a>
+    </section>
+
+    <section class="instructor">
+      <div class="instructor-grid">
+        <div>
+          <div class="portrait">
+            <img src="assets/michael-instructor-portrait.png" alt="Michaelle Almeida">
+          </div>
+          <div class="monogram">
+            <div class="m">M</div>
+            <span class="name">MICHAELLE ALMEIDA</span>
+            <span class="role">NAIL DESIGNER</span>
+          </div>
+        </div>
+
+        <div class="instructor-copy">
+          <h2>Conheça a sua instrutora!</h2>
+          <p>Olá Me chamo Michaelle Almeida, sou uma profissional com mais de 6 anos de experiência no mundo do alongamento de unhas e especialista em molde f-1.</p>
+          <p>Cresci em uma comunidade simples da Zona Oeste de São Paulo, filha de uma nordestina batalhadora. A vida não foi fácil, mas foi através do alongamento de unhas que consegui transformar a minha realidade.</p>
+          <p>Com muito esforço e dedicação, conquistei meu carro, minha casa e uma carreira sólida.</p>
+          <p>Agora, como instrutora deste curso, meu objetivo é compartilhar com você todo o conhecimento que me levou a conquistar meus sonhos. Se eu consegui, você também pode! Vamos Juntas dar o primeiro passo para a sua transformação!</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="separator-band"></div>
+
+    <section class="secure">
+      <div class="secure-card">
+        <div class="payment-row">
+          <div class="pay-pill">Master</div>
+          <div class="pay-pill">VISA</div>
+          <div class="pay-pill">Hiper</div>
+          <div class="pay-logo">Elo</div>
+          <div class="pay-logo">Diners</div>
+          <div class="pay-logo">Pix</div>
+          <div class="pay-logo">Boleto</div>
+        </div>
+        <div class="brand-row">
+          <span class="kiwify">kiwify</span>
+          <span class="lock">🔒</span>
+          <span>https://</span>
+          <span>SEGURA</span>
+        </div>
+        <div class="secure-copy">
+          <h2>Compra segura!</h2>
+          <p>A sua compra é feita diretamente pelo site do kiwify, Plataforma de ensino!</p>
+        </div>
+      </div>
+      <div class="secure-tail" aria-hidden="true"></div>
+    </section>
+
+    <section class="offer-section">
+      <div class="offer-card">
+        <div class="offer-kicker">Método Controle</div>
+        <div class="offer-brand">Máximo</div>
+        <div class="offer-sub">no molde f-1</div>
+        <div class="offer-title">Curso Online</div>
+        <div class="old-price">de R$ 197,00</div>
+        <div class="offer-copy">Por apenas 12x de</div>
+        <div class="offer-price">R$ 6,21</div>
+        <div class="offer-cash">ou R$60,00 à vista</div>
+        <a class="cta" style="width:100%;" href="https://michaellenail.com/controlemaximonomoldef1/">Comprar agora!</a>
+        <div class="mini-badges">
+          <span>🔒 Compra Segura</span>
+          <span>🎓 Certificado</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2 class="section-title">Dúvidas Frequentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">Fiz a compra mas não consigo acessar.</div>
+          <div class="faq-a">Esse link da página é apenas para aquisição do curso. Para acessar o curso basta entrar nas plataformas da Kiwify como WWW.KIWIFY.COM.BR ou pelo aplicativo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Como que faço para ter seus feedbacks?</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Não estou conseguindo entrar ou achar o grupo de links do whatsapp.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Você ensina decorações no curso?</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cross-sell">
+      <h2 class="section-title">Conheça <span class="chip">também!</span></h2>
+      <div class="cross-card">
+        <img src="assets/michael-crosssell-card.png" alt="Workshop Fotos que Vendem">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

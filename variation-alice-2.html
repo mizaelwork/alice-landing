@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alice Carvalho Nails - Variation 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Slab:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #0e8f65;
+      --green-bright: #30c36a;
+      --beige: #d9b07a;
+      --beige-soft: #e7c995;
+      --brown: #855c39;
+      --white: #ffffff;
+      --lightgray: #efefef;
+      --text: #121212;
+      --muted: #5b4f45;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: "Roboto", Arial, sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { display: flex; justify-content: center; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .page { width: 336px; background: #fff; }
+
+    .topbar {
+      height: 14px;
+      background: var(--green-bright);
+      color: #fff;
+      font-size: 6px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .topbar::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .hero {
+      position: relative;
+      padding: 20px 24px 28px;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 22%, rgba(244, 222, 189, 0.45) 0, rgba(244, 222, 189, 0) 20%),
+        radial-gradient(circle at 6% 76%, rgba(255, 248, 235, 0.35) 0, rgba(255, 248, 235, 0) 12%),
+        linear-gradient(180deg, #dcb37c 0%, #c3925e 48%, #855937 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 240, 220, 0.22);
+      opacity: 0.5;
+    }
+    .hero::before { width: 220px; height: 220px; right: -80px; top: 6px; }
+    .hero::after { width: 160px; height: 160px; left: -100px; bottom: 18px; }
+    .logo-kicker {
+      margin-bottom: 2px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .logo-main {
+      margin: 0;
+      font-family: "Roboto Slab", serif;
+      font-size: 19px;
+      line-height: 0.9;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    .logo-sub {
+      margin-top: 1px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      margin: 16px auto 14px;
+      max-width: 286px;
+      font-size: 17px;
+      line-height: 1.14;
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: 900;
+      color: #fff;
+    }
+    .hero h1 .ink {
+      color: #10201c;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0 3px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .video-frame {
+      position: relative;
+      width: 253px;
+      margin: 0 auto 14px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 0 2px rgba(212, 199, 174, 0.25), var(--shadow);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .video-frame img { width: 100%; height: auto; }
+    .cta {
+      display: block;
+      width: 244px;
+      margin: 0 auto;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--green-bright);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+    }
+    .wave-bottom { position: relative; }
+    .wave-bottom::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -18px;
+      height: 34px;
+      background: #fff;
+      border-top-left-radius: 50% 100%;
+      border-top-right-radius: 50% 100%;
+      z-index: 2;
+    }
+
+    .section-white {
+      background: #fff;
+      padding: 32px 0 0;
+    }
+    .section-title {
+      margin: 0 20px 14px;
+      font-size: 16px;
+      line-height: 1.15;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-style: italic;
+      color: var(--text);
+      text-align: center;
+    }
+    .section-title .chip {
+      background: var(--beige-soft);
+      padding: 0 4px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .feedback-wrap {
+      padding: 0 0 22px;
+      text-align: center;
+    }
+    .feedback-card {
+      width: 148px;
+      margin: 0 auto 12px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #d8ad74;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+    .feedback-card img { width: 100%; }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 0 0 14px;
+    }
+    .dots span {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #d7d7d7;
+    }
+    .dots .active { background: #232323; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      padding: 0 12px 20px;
+      text-align: center;
+    }
+    .info-item { color: var(--text); font-size: 7px; line-height: 1.25; }
+    .info-icon { font-size: 28px; line-height: 1; color: #d1a266; margin-bottom: 7px; }
+    .info-item strong { display: block; margin-bottom: 4px; font-size: 9px; font-weight: 900; }
+
+    .caramel-section {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 12px 26px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 85% 85%, rgba(255, 226, 185, 0.3) 0, rgba(255, 226, 185, 0) 24%),
+        linear-gradient(180deg, #d8ad74 0%, #cb9a63 45%, #8b603b 100%);
+    }
+    .caramel-section::before {
+      content: "";
+      position: absolute;
+      left: -3%; right: -3%; top: -18px;
+      height: 36px;
+      background: #fff;
+      border-bottom-left-radius: 50% 100%;
+      border-bottom-right-radius: 50% 100%;
+    }
+    .platform-visual {
+      position: relative;
+      z-index: 1;
+      width: 195px;
+      margin: 0 auto 22px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .platform-title {
+      margin: 0 20px 16px;
+      font-size: 15px;
+      line-height: 1.1;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      text-align: center;
+      color: #141414;
+    }
+    .platform-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+    .platform-box {
+      min-height: 73px;
+      padding: 8px 8px 8px 14px;
+      border: 2px solid #8bfd34;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 7px;
+      line-height: 1.3;
+      position: relative;
+    }
+    .platform-box strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 9px;
+      font-weight: 900;
+      font-style: italic;
+    }
+    .platform-box::before {
+      content: "✓";
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      color: #8bfd34;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .modules {
+      padding: 40px 0 28px;
+      background: #fff;
+      position: relative;
+    }
+    .course-list {
+      display: grid;
+      gap: 12px;
+      padding: 0 20px 24px;
+    }
+    .course-card {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #eadcc5;
+      border-radius: 8px;
+      background: #faf6ee;
+      text-align: left;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.04);
+    }
+    .course-thumb {
+      width: 64px;
+      height: 64px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #eee;
+    }
+    .course-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .course-meta h3 {
+      margin: 0 0 4px;
+      font-size: 12px;
+      line-height: 1.15;
+      color: #1b1b1b;
+      font-weight: 900;
+    }
+    .course-meta p {
+      margin: 0 0 6px;
+      font-size: 8px;
+      line-height: 1.4;
+      color: #65533f;
+    }
+    .price {
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .benefits {
+      padding: 56px 12px 28px;
+    }
+    .benefits .section-title { color: #fff; margin-bottom: 18px; }
+    .benefits-grid-3, .benefits-grid-2 {
+      display: grid;
+      gap: 8px;
+      text-align: center;
+    }
+    .benefits-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 18px;
+    }
+    .benefits-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 236px;
+      margin: 0 auto 18px;
+    }
+    .benefit { color: #fff; font-size: 8px; line-height: 1.3; }
+    .benefit-icon {
+      width: 36px; height: 36px; margin: 0 auto 8px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.92);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 900;
+    }
+    .benefit strong { display: block; margin-bottom: 4px; font-size: 10px; font-weight: 900; }
+
+    .instructor {
+      position: relative;
+      padding: 32px 18px 24px;
+      background: #fff;
+    }
+    .instructor::before {
+      content: "";
+      position: absolute;
+      left: -2%; right: -2%; top: -26px;
+      height: 44px;
+      background: #fff;
+      border-top-left-radius: 50% 100%;
+      border-top-right-radius: 50% 100%;
+    }
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .portrait {
+      width: 114px; height: 114px; margin: 0 auto 16px;
+      border-radius: 50%;
+      padding: 4px;
+      background: #fff;
+      border: 2px solid #202020;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    .portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .monogram {
+      text-align: center;
+      color: #272727;
+      line-height: 1;
+    }
+    .monogram .m {
+      font-family: "Roboto Slab", serif;
+      font-size: 44px;
+      line-height: 0.8;
+    }
+    .monogram .name {
+      display: block;
+      margin-top: 8px;
+      font-family: "Roboto Slab", serif;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+    .monogram .role {
+      display: block;
+      margin-top: 6px;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+    }
+    .instructor-copy h2 {
+      margin: 0 0 10px;
+      color: #171717;
+      font-size: 14px;
+      line-height: 1.08;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .instructor-copy p {
+      margin: 0 0 8px;
+      color: #252525;
+      font-size: 8px;
+      line-height: 1.32;
+      text-align: center;
+    }
+    .separator-band {
+      height: 42px;
+      background:
+        radial-gradient(circle at 12% 0, #fff 0, #fff 18px, transparent 19px),
+        radial-gradient(circle at 46% 0, #fff 0, #fff 18px, transparent 19px),
+        radial-gradient(circle at 80% 0, #fff 0, #fff 18px, transparent 19px),
+        linear-gradient(180deg, #ddb47d 0%, #d6aa71 100%);
+    }
+    .secure {
+      padding: 18px 2px 18px;
+      background: linear-gradient(180deg, #d6aa71 0%, #7b5232 100%);
+    }
+    .secure-card {
+      margin: 0 auto;
+      width: 300px;
+      padding: 18px 16px 16px;
+      background: #fff;
+      border: 2px solid #dfd3bf;
+      border-radius: 4px;
+      text-align: center;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+    }
+    .payment-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .pay-pill {
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
+      background: #fff;
+      padding: 4px 3px;
+      font-size: 8px;
+      font-weight: 700;
+      line-height: 1;
+      color: #666;
+    }
+    .brand-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 900;
+      flex-wrap: wrap;
+    }
+    .secure-copy h2 {
+      margin: 0 0 8px;
+      color: #171717;
+      font-size: 16px;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+    .secure-copy p {
+      margin: 0;
+      color: #222;
+      font-size: 9px;
+      line-height: 1.3;
+    }
+    .offer-section {
+      padding: 18px 0 24px;
+      background: var(--lightgray);
+    }
+    .offer-card {
+      width: 168px;
+      margin: 0 auto;
+      padding: 16px 12px 12px;
+      border-radius: 4px;
+      border: 3px solid #2e2e2e;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .offer-kicker, .offer-sub {
+      font-size: 8px;
+      text-transform: uppercase;
+      color: #1d1d1d;
+      font-weight: 700;
+    }
+    .offer-brand {
+      margin: 2px 0 4px;
+      font-family: "Roboto Slab", serif;
+      font-size: 18px;
+      line-height: 0.96;
+      text-transform: uppercase;
+      color: #111;
+      font-weight: 900;
+    }
+    .offer-title {
+      margin: 0 0 8px;
+      font-size: 11px;
+      line-height: 1.12;
+      font-weight: 900;
+      font-style: italic;
+      text-transform: uppercase;
+      color: #171717;
+    }
+    .offer-copy {
+      margin-top: 8px;
+      color: #151515;
+      font-size: 8px;
+      line-height: 1.25;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .offer-price {
+      margin: 2px 0;
+      color: var(--green);
+      font-size: 28px;
+      line-height: 0.95;
+      font-weight: 900;
+    }
+    .offer-cash {
+      margin-bottom: 12px;
+      color: #62b74a;
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .mini-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 8px;
+      color: #222;
+      font-size: 7px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">Cursos online da Alice Carvalho</div>
+
+    <section class="hero wave-bottom">
+      <div class="logo-kicker">Alice Carvalho</div>
+      <div class="logo-main">Nails</div>
+      <div class="logo-sub">blindagem e molde f1</div>
+
+      <h1>Aprenda com pratica real para viver das unhas e aplicar <span class="ink">blindagem e molde express</span></h1>
+
+      <div class="video-frame">
+        <img src="assets/alice-top-collage.png" alt="Trabalho da Alice Carvalho">
+      </div>
+
+      <a class="cta" href="https://pay.cakto.com.br/ohoz79b_846247">Quero ver a formacao principal</a>
+    </section>
+
+    <section class="section-white">
+      <div class="feedback-wrap">
+        <h2 class="section-title">Visual da <span class="chip">Alice</span></h2>
+        <div class="feedback-card">
+          <img src="assets/alice-quote-post.png" alt="Post da Alice Carvalho">
+        </div>
+        <div class="dots" aria-hidden="true">
+          <span></span><span></span><span></span><span class="active"></span><span></span><span></span>
+        </div>
+        <a class="cta" href="https://www.instagram.com/alicecarvalho.nails/">Abrir Instagram</a>
+      </div>
+
+      <h2 class="section-title">Informacoes dos <span class="chip">cursos!</span></h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">✓</div>
+          <strong>Garantia de 7 dias</strong>
+          <div>Experimente sem riscos nas duas ofertas centrais.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">▶</div>
+          <strong>Aulas gravadas</strong>
+          <div>Conteudo para revisar sempre no seu ritmo.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✦</div>
+          <strong>Pratica aplicada</strong>
+          <div>Foco em resultado, tecnica e rapidez no atendimento.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">$</div>
+          <strong>Duas entradas</strong>
+          <div>Molde Express e Blindagem Estruturada com links reais.</div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⌂</div>
+          <strong>Florianopolis</strong>
+          <div>Marca pessoal ativa em Ingleses, SC, com cursos e atendimentos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="caramel-section">
+      <div class="platform-visual">
+        <img src="assets/alice-highlight-covers.png" alt="Destaques do Instagram da Alice">
+      </div>
+
+      <h2 class="platform-title">Acesso, atendimento e posicionamento!</h2>
+
+      <div class="platform-boxes">
+        <div class="platform-box">
+          <strong>WhatsApp direto</strong>
+          <div>Atendimento no link oficial da Alice para tirar duvidas e encaminhar a compra.</div>
+        </div>
+        <div class="platform-box">
+          <strong>Instagram ativo</strong>
+          <div>Perfil com 205 posts, destaques de cursos, backstage e trabalhos recentes.</div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://wa.me/message/QMVSU4E7AU76F1">Chamar no WhatsApp</a>
+    </section>
+
+    <section class="modules">
+      <h2 class="section-title">As 2 ofertas da <span class="chip">pagina</span></h2>
+      <div class="course-list">
+        <article class="course-card">
+          <div class="course-thumb"><img src="assets/alice-reel-nails.png" alt="Blindagem Estruturada"></div>
+          <div class="course-meta">
+            <h3>Blindagem Estruturada</h3>
+            <p>Passo a passo da blindagem, preparacao das unhas, lixamento, polimento, manutencao e bonus.</p>
+            <div class="price">9x de R$ 5,04 ou R$ 37,90</div>
+          </div>
+        </article>
+        <article class="course-card">
+          <div class="course-thumb"><img src="assets/alice-profile-avatar.png" alt="Pratico Molde Express"></div>
+          <div class="course-meta">
+            <h3>Pratico Molde Express</h3>
+            <p>Molde F1, anatomia das unhas, curvatura, finalizacao, bonus e certificado incluso.</p>
+            <div class="price">R$ 27,90 a vista</div>
+          </div>
+        </article>
+      </div>
+      <a class="cta" href="https://pay.cakto.com.br/u7d4knp">Quero me inscrever</a>
+    </section>
+
+    <section class="caramel-section benefits">
+      <h2 class="section-title">Tudo o que voce precisa! esta aqui!</h2>
+      <div class="benefits-grid-3">
+        <div class="benefit">
+          <div class="benefit-icon">⌛</div>
+          <strong>Menos tempo de mesa</strong>
+          <div>Aprenda com foco em praticidade real no atendimento.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">$</div>
+          <strong>Mais lucro</strong>
+          <div>Tecnicas que economizam material e melhoram a entrega.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✦</div>
+          <strong>Dois caminhos</strong>
+          <div>Blindagem e molde F1 como ofertas complementares.</div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Marca pessoal para anuncios!</h2>
+      <div class="benefits-grid-2">
+        <div class="benefit">
+          <div class="benefit-icon">@</div>
+          <strong>Instagram forte</strong>
+          <div>Bio clara, destaques tematicos e visual consistente.</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <strong>Contato facil</strong>
+          <div>WhatsApp, Instagram e checkouts oficiais conectados.</div>
+        </div>
+      </div>
+
+      <a class="cta" href="https://www.instagram.com/alicecarvalho.nails/">Ver perfil completo</a>
+    </section>
+
+    <section class="instructor">
+      <div class="instructor-grid">
+        <div>
+          <div class="portrait">
+            <img src="assets/alice-profile-avatar.png" alt="Alice Carvalho">
+          </div>
+          <div class="monogram">
+            <div class="m">A</div>
+            <span class="name">ALICE CARVALHO</span>
+            <span class="role">NAIL DESIGNER</span>
+          </div>
+        </div>
+
+        <div class="instructor-copy">
+          <h2>Conheca a Alice!</h2>
+          <p>Vive das unhas e compartilha reflexoes, cursos e atendimentos com foco em praticidade para a aluna ter mais liberdade.</p>
+          <p>Seu perfil destaca blindagem em unha natural, alongamento em molde F1, durabilidade, backstage de curso presencial e informacoes dos cursos.</p>
+          <p>Essa pagina foi pensada para anuncios diretos, usando apenas links reais da Alice Carvalho Nails.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="separator-band"></div>
+
+    <section class="secure">
+      <div class="secure-card">
+        <div class="payment-row">
+          <div class="pay-pill">Visa</div>
+          <div class="pay-pill">Master</div>
+          <div class="pay-pill">Pix</div>
+          <div class="pay-pill">Cakto</div>
+          <div class="pay-pill">SC</div>
+        </div>
+        <div class="brand-row">
+          <span>alicecarvalhonails.com.br</span>
+          <span>WhatsApp</span>
+          <span>Instagram</span>
+        </div>
+        <div class="secure-copy">
+          <h2>Compra e contato seguros!</h2>
+          <p>Checkouts reais da Cakto, links oficiais da Alice e atendimento direto pelo WhatsApp.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer-section">
+      <div class="offer-card">
+        <div class="offer-kicker">Oferta principal</div>
+        <div class="offer-brand">Alice Carvalho</div>
+        <div class="offer-sub">blindagem e esmalta&ccedil;&atilde;o em gel</div>
+        <div class="offer-title">Curso Pratico Blindagem Estruturada</div>
+        <div class="offer-copy">Em ate 9x de</div>
+        <div class="offer-price">R$ 5,04</div>
+        <div class="offer-cash">ou R$ 37,90 a vista</div>
+        <a class="cta" style="width:100%;" href="https://pay.cakto.com.br/ohoz79b_846247">Comprar agora</a>
+        <div class="mini-badges">
+          <span>7 dias</span>
+          <span>Bonus</span>
+          <span>Aulas gravadas</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,34 @@
+.git
+.gitignore
+*.md
+desktop.ini
+**/desktop.ini
+_preview.png
+variation-1*.html
+variation-2*.html
+variation-3*.html
+variation-alice-1.html
+variation-alice-2.html
+variation-alice-3.html
+variation-alice-1-round-*.png
+variation-alice-2-round-*.png
+variation-alice-3-round-*.png
+variation-alice-1-final.png
+variation-alice-2-final.png
+variation-alice-3-final.png
+variation-alice-1-luxe-round-*.png
+variation-1-round-*.png
+variation-2-round-*.png
+variation-3-round-*.png
+variation-1-final.png
+variation-2-final.png
+variation-3-final.png
+jenniferfabri*.png
+*.pdf
+midias/Aluna Rafaela.jpeg
+midias/Aluna Victoria.jpeg
+midias/foto alice curso 1.png
+midias/feedback Marquiele aluna video.mp4
+midias/WhatsApp Image*.jpeg
+Dockerfile
+.dockerignore

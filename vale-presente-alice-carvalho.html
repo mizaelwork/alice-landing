@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vale Presente — Alice Carvalho Nails</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1E3A5F;
+    --navy-deep: #142A47;
+    --gold: #C9A961;
+    --gold-soft: #E0CFA0;
+    --soft-blue: #7BA3C9;
+    --pale-blue: #EAF0F7;
+    --ice-blue: #F5F8FC;
+    --off-white: #FBF9F4;
+    --dark: #2C3E50;
+    --muted: #6B7C93;
+  }
+
+  body {
+    background: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 148mm; /* A5 landscape */
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* ─── Ornamentos de fundo ─── */
+  .bg-oval-1 {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(74, 111, 165, 0.15);
+    top: -80px;
+    right: -60px;
+    pointer-events: none;
+  }
+  .bg-oval-2 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(201, 169, 97, 0.08);
+    bottom: -50px;
+    left: -40px;
+    pointer-events: none;
+  }
+  .bg-oval-3 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(201, 169, 97, 0.06);
+    top: 20px;
+    left: 30%;
+    pointer-events: none;
+  }
+
+  /* ─── Faixa dourada lateral esquerda ─── */
+  .gold-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  }
+
+  /* ─── Marca de bolinhas canto superior direito ─── */
+  .corner-mark {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .corner-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+  .corner-dot.gold { background: var(--gold); }
+  .corner-dot.blue { background: var(--soft-blue); }
+
+  /* ─── Conteúdo principal ─── */
+  .content {
+    position: relative;
+    z-index: 2;
+    padding: 28px 36px 0 44px;
+    flex: 1;
+  }
+
+  .kicker {
+    font-family: 'Calibri', sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .main-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 36px;
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .gold-line {
+    width: 48px;
+    height: 1.5px;
+    background: var(--gold);
+    margin: 10px 0 16px 0;
+  }
+
+  .course-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold-soft);
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .course-sub {
+    font-family: 'Calibri', sans-serif;
+    font-size: 10.5px;
+    color: var(--soft-blue);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ─── Bloco do presenteado ─── */
+  .recipient-block {
+    position: relative;
+    z-index: 2;
+    margin: 18px 36px 0 44px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201, 169, 97, 0.25);
+    border-left: 3px solid var(--gold);
+  }
+
+  .recipient-label {
+    font-family: 'Calibri', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .recipient-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  /* ─── Frase inspiracional ─── */
+  .inspiration-block {
+    position: relative;
+    z-index: 2;
+    margin: 16px 44px 0 44px;
+    padding: 14px 20px 14px 22px;
+    border-left: 2px solid rgba(201, 169, 97, 0.45);
+  }
+
+  .inspiration-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13.5px;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.65;
+  }
+
+  .inspiration-text strong {
+    font-weight: 400;
+    color: var(--gold-soft);
+  }
+
+  /* ─── Rodapé ─── */
+  .footer-area {
+    position: relative;
+    z-index: 2;
+    padding: 14px 36px 20px 44px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .location-block {
+    text-align: right;
+  }
+  .location-text {
+    font-family: 'Calibri', sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .signature-area {
+    text-align: right;
+    margin-top: 8px;
+  }
+  .signature-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+  .signature-title {
+    font-family: 'Calibri', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 1px;
+  }
+
+  /* ─── Número de série / código ─── */
+  .serial {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Calibri', sans-serif;
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: rgba(107,124,147,0.4);
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  /* ─── Marca d'água ornamental ─── */
+  .watermark {
+    position: absolute;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 100px;
+    font-weight: 300;
+    color: rgba(201, 169, 97, 0.04);
+    bottom: -10px;
+    right: 36px;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  /* ─── Print ─── */
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page {
+      width: 210mm;
+      height: 148mm;
+      page-break-after: avoid;
+    }
+    @page { size: A5 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Ornamentos de fundo -->
+  <div class="bg-oval-1"></div>
+  <div class="bg-oval-2"></div>
+  <div class="bg-oval-3"></div>
+
+  <!-- Faixa lateral dourada -->
+  <div class="gold-bar"></div>
+
+  <!-- Marca de bolinhas -->
+  <div class="corner-mark">
+    <div class="corner-dot blue"></div>
+    <div class="corner-dot gold"></div>
+  </div>
+
+  <!-- Marca d'água -->
+  <div class="watermark">AC</div>
+
+  <!-- Conteúdo principal -->
+  <div class="content">
+    <div class="kicker">Alice Carvalho Nails · Vale Presente</div>
+    <div class="main-title">Curso Presencial</div>
+    <div class="gold-line"></div>
+    <div class="course-name">Alongamento de Unhas & Blindagem</div>
+    <div class="course-sub">Formação prática · Florianópolis</div>
+  </div>
+
+  <!-- Presenteado -->
+  <div class="recipient-block">
+    <div class="recipient-label">Para</div>
+    <div class="recipient-name">Brenda Almeida Garcia</div>
+  </div>
+
+  <!-- Frase inspiracional -->
+  <div class="inspiration-block">
+    <div class="inspiration-text">
+      Mais do que um presente, esse curso é um <strong>investimento na tua nova fase.</strong><br>
+      Que ele te abra portas, desperte ainda mais o teu potencial e te ajude a colher
+      frutos lindos através do teu talento, da tua coragem e dos teus sonhos.
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer-area">
+    <div class="location-block">
+      <div class="location-text">Florianópolis · SC · 2026</div>
+      <div class="signature-area">
+        <div class="signature-name">Alice Ferreira Carvalho</div>
+        <div class="signature-title">Instrutora · Alice Carvalho Nails</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="serial">alice-carvalho-nails · vale-presente · 2026</div>
+
+</div>
+
+</body>
+</html>

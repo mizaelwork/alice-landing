@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alice Carvalho Nails - Variation 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-bg: #f6d5de;
+      --hero-pink: #d07bac;
+      --hero-purple: #8f67c1;
+      --purple: #9f6bb3;
+      --purple-dark: #8d5aa8;
+      --soft-purple: #b985cf;
+      --coral: #ff4a40;
+      --offer-pink: #ff5b90;
+      --offer-blue: #2f89ff;
+      --green: #22b261;
+      --text: #313131;
+      --muted: #6c6c6c;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--pink-bg);
+      color: var(--text);
+      font-family: "Montserrat", sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { display: flex; justify-content: center; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .page { width: 302px; background: var(--pink-bg); }
+
+    .hero {
+      position: relative;
+      min-height: 291px;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--hero-purple) 0%, #ba6fa9 45%, #d67ea9 100%);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: 175px;
+      padding: 28px 0 20px 6px;
+      color: #fff;
+    }
+    .brand {
+      margin-bottom: 24px;
+      line-height: 0.9;
+      text-transform: lowercase;
+      font-weight: 800;
+    }
+    .brand strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+    .brand span {
+      display: block;
+      margin-left: 18px;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.12;
+      font-weight: 800;
+    }
+    .hero p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.82);
+      font-size: 8px;
+      line-height: 1.7;
+      max-width: 150px;
+    }
+    .btn-coral, .btn-green, .btn-blue {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      border: 0;
+    }
+    .btn-coral {
+      min-width: 112px;
+      min-height: 30px;
+      padding: 0 14px;
+      background: var(--coral);
+      font-size: 7px;
+      box-shadow: 0 8px 18px rgba(255, 74, 64, 0.2);
+    }
+    .hero-model {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 126px;
+      height: 244px;
+      overflow: hidden;
+    }
+    .hero-model img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 12%;
+    }
+
+    .split-intro {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      background: #fff;
+      min-height: 141px;
+    }
+    .split-intro .photo {
+      height: 141px;
+      overflow: hidden;
+    }
+    .split-intro .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .split-intro .copy {
+      padding: 19px 14px 12px 16px;
+    }
+    .split-intro h2 {
+      margin: 0 0 12px;
+      color: #252525;
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+    .split-intro p {
+      margin: 0;
+      color: #585858;
+      font-size: 7px;
+      line-height: 1.7;
+    }
+
+    .video-section {
+      position: relative;
+      padding: 34px 0 34px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(180deg, #d57ead 0%, #aa6db6 100%);
+      overflow: hidden;
+    }
+    .video-section::before, .video-section::after {
+      content: "";
+      position: absolute;
+      top: 88px;
+      width: 60px;
+      height: 76px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,243,245,0.9) 0%, rgba(255,243,245,0.3) 32%, rgba(255,243,245,0) 72%);
+      filter: blur(4px);
+    }
+    .video-section::before { left: 16px; }
+    .video-section::after { right: 16px; }
+    .video-section h2, .section-title {
+      margin: 0 auto 18px;
+      font-size: 10px;
+      line-height: 1.22;
+      font-weight: 800;
+      max-width: 210px;
+    }
+    .video-box {
+      width: 116px;
+      height: 84px;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      background: #0a2031;
+    }
+    .video-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .features {
+      background: #fff;
+      padding: 34px 0 28px;
+      text-align: center;
+    }
+    .features h2 {
+      margin: 0 auto 18px;
+      color: #3a3a3a;
+      font-size: 9px;
+      line-height: 1.35;
+      font-weight: 500;
+      max-width: 226px;
+    }
+    .features h2 u {
+      font-weight: 800;
+      text-decoration-thickness: 2px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 0 0 18px;
+    }
+    .card {
+      min-height: 74px;
+      padding: 7px 8px;
+      color: #fff;
+      text-align: left;
+      font-size: 6px;
+      line-height: 1.48;
+      background: var(--purple);
+    }
+    .card:nth-child(2), .card:nth-child(5) { background: #c17ab0; }
+    .card:nth-child(3), .card:nth-child(6) { background: #9865c0; }
+    .card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 7px;
+      font-weight: 700;
+    }
+    .checks-title {
+      margin: 0 0 12px;
+      color: #5b5b5b;
+      font-size: 7px;
+      font-weight: 500;
+    }
+    .checks-title strong { font-weight: 800; }
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px 4px;
+      padding: 0 6px;
+    }
+    .check {
+      color: #666;
+      font-size: 7px;
+      line-height: 1.4;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      justify-content: center;
+    }
+    .tick {
+      color: #a365c7;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .why {
+      display: grid;
+      grid-template-columns: 1fr 111px;
+      min-height: 333px;
+    }
+    .why-copy {
+      padding: 22px 18px 18px 8px;
+      color: #fff;
+      background: linear-gradient(180deg, #c876a9 0%, #9a66be 100%);
+    }
+    .why-copy h2 {
+      margin: 0 0 18px;
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 800;
+    }
+    .why-copy h3 {
+      margin: 0 0 10px;
+      font-size: 7px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+    .why-copy p {
+      margin: 0 0 16px;
+      font-size: 7px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.82);
+    }
+    .why-photo {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
+        linear-gradient(180deg, #fff 0%, #f7d8dd 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 55% 14%, rgba(214, 172, 182, 0.45) 0, rgba(214, 172, 182, 0) 18%),
+        linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
+    }
+    .bottle {
+      position: absolute;
+      bottom: 0;
+      width: 16px;
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(180deg, #ffffff 0%, #f5dce5 100%);
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+    }
+    .bottle::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 3px;
+      right: 3px;
+      height: 8px;
+      border-radius: 2px 2px 0 0;
+      background: #404040;
+    }
+    .b1 { left: 10px; height: 86px; background: linear-gradient(180deg, #fff 0%, #f7cfd8 100%); }
+    .b2 { left: 30px; height: 142px; }
+    .b3 { left: 50px; height: 118px; background: linear-gradient(180deg, #fff 0%, #ffd7e9 100%); }
+    .b4 { left: 70px; height: 56px; background: linear-gradient(180deg, #fff 0%, #ff5a6d 100%); }
+    .b5 { left: 88px; height: 136px; background: linear-gradient(180deg, #fff 0%, #ffe1f0 100%); }
+
+    .offer-wrap {
+      position: relative;
+      background: #fff;
+      padding: 34px 0 26px;
+      overflow: hidden;
+    }
+    .offer-wrap::before, .offer-wrap::after {
+      content: "";
+      position: absolute;
+      top: 34px;
+      width: 124px;
+      height: 170px;
+      background-repeat: no-repeat;
+      opacity: 0.35;
+      z-index: 0;
+    }
+    .offer-wrap::before {
+      left: -8px;
+      background:
+        radial-gradient(circle at 28px 112px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        radial-gradient(circle at 58px 84px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        radial-gradient(circle at 88px 110px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        linear-gradient(#d7d7d7, #d7d7d7);
+      background-size: auto, auto, auto, 1px 112px;
+      background-position: 0 0, 0 0, 0 0, 58px 58px;
+    }
+    .offer-wrap::after {
+      right: -8px;
+      transform: scaleX(-1);
+      background:
+        radial-gradient(circle at 28px 112px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        radial-gradient(circle at 58px 84px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        radial-gradient(circle at 88px 110px, transparent 0 22px, #d7d7d7 23px 24px, transparent 25px),
+        linear-gradient(#d7d7d7, #d7d7d7);
+      background-size: auto, auto, auto, 1px 112px;
+      background-position: 0 0, 0 0, 0 0, 58px 58px;
+    }
+    .offer-card {
+      position: relative;
+      z-index: 1;
+      width: 146px;
+      margin: 0 auto 28px;
+      padding: 18px 18px 16px;
+      border-radius: 24px 24px 18px 18px;
+      background: var(--offer-pink);
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 18px 24px rgba(255,91,144,0.18);
+    }
+    .offer-small {
+      font-size: 7px;
+      line-height: 1.15;
+      font-weight: 700;
+    }
+    .offer-old {
+      margin: 2px 0 0;
+      font-size: 9px;
+      font-weight: 700;
+    }
+    .offer-price {
+      margin: 4px 0;
+      font-size: 23px;
+      line-height: 0.95;
+      font-weight: 900;
+    }
+    .offer-installments {
+      font-size: 5px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.82);
+    }
+    .btn-blue {
+      width: 110px;
+      height: 20px;
+      margin: 10px auto 10px;
+      background: var(--offer-blue);
+      font-size: 5px;
+      font-weight: 700;
+    }
+    .payment-badges {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.9);
+      font-size: 5px;
+      line-height: 1;
+    }
+
+    .guarantee {
+      padding: 0 20px 34px;
+      text-align: center;
+      background: #fff;
+    }
+    .guarantee h2 {
+      margin: 0 0 12px;
+      color: #2a2a2a;
+      font-size: 10px;
+      line-height: 1.1;
+      font-weight: 500;
+    }
+    .guarantee h2 strong { font-weight: 900; }
+    .guarantee p {
+      margin: 0 auto;
+      max-width: 244px;
+      color: #666;
+      font-size: 6px;
+      line-height: 1.65;
+    }
+
+    .testimonials {
+      position: relative;
+      padding: 36px 0 36px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(180deg, #9d63b0 0%, #cf84aa 100%);
+    }
+    .testimonials h2 {
+      margin: 0 auto 28px;
+      max-width: 220px;
+      font-size: 10px;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+    .arrow {
+      position: absolute;
+      top: 206px;
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .arrow.left { left: 36px; }
+    .arrow.right { right: 36px; }
+    .testimonial-card {
+      width: 180px;
+      margin: 0 auto 8px;
+      background: #fff;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .testimonial-card img { width: 100%; }
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    .dots span {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.65);
+    }
+    .dots .active { background: #fff; }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 151px;
+      min-height: 242px;
+      background: #fff;
+    }
+    .about-copy {
+      padding: 18px 10px 14px 12px;
+    }
+    .about-copy h2 {
+      margin: 0 0 14px;
+      color: #222;
+      font-size: 8px;
+      line-height: 1.15;
+      font-weight: 800;
+    }
+    .about-copy p {
+      margin: 0 0 11px;
+      color: #555;
+      font-size: 6px;
+      line-height: 1.7;
+    }
+    .about-photo {
+      height: 242px;
+      overflow: hidden;
+      background: #f4f0f0;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 60% 14%;
+    }
+    .contact {
+      background: #ececec;
+      text-align: center;
+      padding: 46px 24px 180px;
+    }
+    .contact h2 {
+      margin: 0 0 14px;
+      color: #3a3a3a;
+      font-size: 9px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    .contact p {
+      margin: 0 auto 20px;
+      max-width: 188px;
+      color: #666;
+      font-size: 6px;
+      line-height: 1.6;
+    }
+    .btn-green {
+      width: 100px;
+      height: 22px;
+      background: var(--green);
+      font-size: 5px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="brand">
+          <strong>alicecarvalho</strong>
+          <span>nails</span>
+        </div>
+        <h1>Especialista em te ensinar unhas com praticidade pra voce ter sua liberdade.</h1>
+        <p>Nail designer focada em alongamento de unhas, blindagem e cursos online com aplicacao pratica para o dia a dia.</p>
+        <a class="btn-coral" href="https://wa.me/message/QMVSU4E7AU76F1">Toque aqui para falar com a Alice</a>
+      </div>
+      <div class="hero-model">
+        <img src="assets/alice-portrait-clean.png" alt="Alice Carvalho">
+      </div>
+    </section>
+
+    <section class="split-intro">
+      <div class="photo">
+        <img src="assets/alice-reel-nails.png" alt="Blindagem e esmalta&ccedil;&atilde;o em gel">
+      </div>
+      <div class="copy">
+        <h2>Duas formacoes para quem quer praticidade, tecnica e lucro nas unhas</h2>
+        <p>Blindagem Estruturada e Pratico Molde Express foram pensados para ser online, praticos e aplicados no atendimento real.</p>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <h2>Veja a identidade da Alice Carvalho e entenda a proposta dos cursos</h2>
+      <div class="video-box">
+        <img src="assets/alice-highlight-covers.png" alt="Destaques do perfil da Alice">
+      </div>
+      <a class="btn-coral" href="https://www.instagram.com/alicecarvalho.nails/">Abrir Instagram</a>
+    </section>
+
+    <section class="features">
+      <h2>O conteudo da <u>Alice Carvalho Nails</u> foi organizado em duas ofertas centrais...</h2>
+      <div class="cards">
+        <article class="card"><strong>Blindagem Estruturada</strong>Passo a passo da blindagem, preparadores, preparacao das unhas, lixamento tecnico e manutencao.</article>
+        <article class="card"><strong>Molde Express</strong>Molde F1, anatomia das unhas, formatos, brocas, curvatura e polimento com pratica real.</article>
+        <article class="card"><strong>Garantia</strong>As ofertas destacadas trabalham com garantia de 7 dias para compra mais segura.</article>
+        <article class="card"><strong>Bonus</strong>Blindagem no Molde F1, esmaltacao em gel e aprenda cuticula como reforco pratico.</article>
+        <article class="card"><strong>Revisao</strong>Area de membros e aulas gravadas para revisar sempre que for necessario.</article>
+        <article class="card"><strong>Contato</strong>Atendimento no WhatsApp, cursos e informacoes concentradas no perfil oficial.</article>
+      </div>
+      <div class="checks-title">Al&eacute;m disso, <strong>voce tambem encontra:</strong></div>
+      <div class="checks">
+        <div class="check"><span class="tick">✓</span><span>205 posts publicados</span></div>
+        <div class="check"><span class="tick">✓</span><span>1.517 seguidores</span></div>
+        <div class="check"><span class="tick">✓</span><span>Florianopolis, SC</span></div>
+        <div class="check"><span class="tick">✓</span><span>Alongamento e blindagem</span></div>
+      </div>
+    </section>
+
+    <section class="why">
+      <div class="why-copy">
+        <h2>Por que a Alice Carvalho e a escolha ideal para essa landing de anuncios?</h2>
+        <h3>Praticidade na promessa</h3>
+        <p>A mensagem central da marca ja aponta para liberdade, aplicacao pratica e formacao que cabe no dia a dia da aluna.</p>
+        <h3>Duas ofertas claras</h3>
+        <p>Uma entrada mais acessivel com o Molde Express e uma oferta forte de Blindagem Estruturada para captacao direta.</p>
+        <h3>Marca pessoal ativa</h3>
+        <p>Instagram com destaques especificos para blindagem, alongamento, durabilidade, backstage e informacoes de cursos.</p>
+      </div>
+      <div class="why-photo" aria-hidden="true">
+        <span class="bottle b1"></span>
+        <span class="bottle b2"></span>
+        <span class="bottle b3"></span>
+        <span class="bottle b4"></span>
+        <span class="bottle b5"></span>
+      </div>
+    </section>
+
+    <section class="offer-wrap">
+      <div class="offer-card">
+        <div class="offer-small">Oferta foco</div>
+        <div class="offer-old">Blindagem</div>
+        <div class="offer-small">em ate</div>
+        <div class="offer-price">9x R$ 5,04</div>
+        <div class="offer-installments">ou R$ 37,90 a vista na Cakto</div>
+        <a class="btn-blue" href="https://pay.cakto.com.br/ohoz79b_846247">Finalizar compra</a>
+        <div class="payment-badges">
+          <span>Cakto</span>
+          <span>7 dias</span>
+          <span>Bonus</span>
+          <span>Curso online</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="guarantee">
+      <h2>07 dias de garantia. <strong>Experimente sem riscos para validar a proposta da Alice.</strong></h2>
+      <p>As ofertas desta pagina foram organizadas a partir do checkout real e do posicionamento do perfil oficial, sem inventar modulo ou promessa fora do material enviado.</p>
+    </section>
+
+    <section class="testimonials">
+      <h2>Veja um recorte do universo visual que acompanha a Alice Carvalho Nails.</h2>
+      <span class="arrow left">‹</span>
+      <div class="testimonial-card">
+        <img src="assets/alice-quote-post.png" alt="Post da Alice Carvalho">
+      </div>
+      <span class="arrow right">›</span>
+      <div class="dots" aria-hidden="true">
+        <span class="active"></span><span></span><span></span><span></span>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="about-copy">
+        <h2>Quem e Alice Carvalho?</h2>
+        <p>Vive das unhas e compartilha reflexoes, cursos e atendimentos com foco em praticidade para outras mulheres.</p>
+        <p>Seu perfil se apresenta como Nail Designer focada em alongamento de unhas e blindagem, com linguagem direta e oferta clara.</p>
+        <p>Tambem carrega uma rotina de bastidores, studio e informacoes de cursos, o que fortalece a proposta para paginas de anuncios.</p>
+      </div>
+      <div class="about-photo">
+        <img src="assets/alice-portrait-clean.png" alt="Alice Carvalho">
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Ficou com alguma duvida sobre os cursos?</h2>
+      <p>Entre em contato no WhatsApp e siga o Instagram oficial para ver mais trabalhos, reflexoes e informacoes dos cursos.</p>
+      <a class="btn-green" href="https://wa.me/message/QMVSU4E7AU76F1">Entrar em contato</a>
+    </section>
+  </main>
+</body>
+</html>

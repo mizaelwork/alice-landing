@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificado — Além da Técnica · Alice Carvalho Nails</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1E3A5F;
+    --navy-deep: #142A47;
+    --gold: #C9A961;
+    --gold-soft: #E0CFA0;
+    --soft-blue: #7BA3C9;
+    --pale-blue: #EAF0F7;
+    --ice-blue: #F5F8FC;
+    --off-white: #FBF9F4;
+    --dark: #2C3E50;
+    --muted: #6B7C93;
+  }
+
+  body {
+    background: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'Calibri', 'Trebuchet MS', sans-serif;
+  }
+
+  .page {
+    width: 297mm;
+    height: 210mm; /* A4 landscape */
+    background: var(--off-white);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── Borda ornamental interna ─── */
+  .inner-border {
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(201, 169, 97, 0.35);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .inner-border-2 {
+    position: absolute;
+    inset: 16px;
+    border: 0.5px solid rgba(201, 169, 97, 0.15);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* ─── Faixas laterais navy ─── */
+  .navy-left {
+    position: absolute;
+    left: 0; top: 0;
+    width: 58px; height: 100%;
+    background: var(--navy);
+    z-index: 1;
+  }
+  .navy-right {
+    position: absolute;
+    right: 0; top: 0;
+    width: 58px; height: 100%;
+    background: var(--navy);
+    z-index: 1;
+  }
+
+  /* ─── Detalhes dentro das faixas ─── */
+  .left-ornament {
+    position: absolute;
+    left: 0; top: 0;
+    width: 58px; height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+  .right-ornament {
+    position: absolute;
+    right: 0; top: 0;
+    width: 58px; height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .side-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+  .side-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.5;
+  }
+  .side-label {
+    font-family: 'Calibri', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--soft-blue);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    opacity: 0.6;
+  }
+
+  /* ─── Ornamentos de fundo ─── */
+  .bg-oval-tl {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,58,95,0.06) 0%, transparent 70%);
+    top: -100px; left: 20px;
+    pointer-events: none; z-index: 0;
+  }
+  .bg-oval-br {
+    position: absolute;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,169,97,0.05) 0%, transparent 70%);
+    bottom: -80px; right: 20px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ─── Watermark ─── */
+  .watermark {
+    position: absolute;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 220px;
+    font-weight: 300;
+    color: rgba(30, 58, 95, 0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+  }
+
+  /* ─── Conteúdo central ─── */
+  .main-content {
+    position: relative;
+    z-index: 4;
+    flex: 1;
+    margin: 0 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 48px;
+  }
+
+  .kicker-top {
+    font-family: 'Calibri', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .cert-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 14px 0;
+    justify-content: center;
+  }
+  .gold-divider-line {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    opacity: 0.7;
+  }
+  .gold-divider-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .certifies-text {
+    font-family: 'Calibri', sans-serif;
+    font-size: 10.5px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+
+  /* ─── Campo do nome ─── */
+  .name-block {
+    margin: 4px 0 16px 0;
+    padding: 6px 0 8px 0;
+    border-bottom: 1.5px solid var(--gold);
+    width: 72%;
+    min-width: 300px;
+  }
+  .name-field {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.1;
+    min-height: 44px;
+    /* Espaço para preenchimento manual */
+  }
+  .name-field-placeholder {
+    color: rgba(30,58,95,0.18);
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .completion-text {
+    font-family: 'Calibri', sans-serif;
+    font-size: 10.5px;
+    color: var(--dark);
+    line-height: 1.6;
+    max-width: 380px;
+    margin-bottom: 6px;
+  }
+
+  .formation-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 2px 0 4px 0;
+    letter-spacing: 0.3px;
+  }
+
+  .formation-sub {
+    font-family: 'Calibri', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--soft-blue);
+    margin-bottom: 18px;
+  }
+
+  /* ─── Rodapé do certificado ─── */
+  .cert-footer {
+    position: relative;
+    z-index: 4;
+    margin: 0 58px;
+    padding: 0 48px 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-col {
+    text-align: center;
+    flex: 1;
+  }
+  .footer-col-center {
+    text-align: center;
+    flex: 0.8;
+  }
+
+  .footer-line {
+    width: 120px;
+    height: 1px;
+    background: rgba(30,58,95,0.25);
+    margin: 0 auto 5px auto;
+  }
+  .footer-label {
+    font-family: 'Calibri', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+  .footer-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--dark);
+  }
+  .footer-value-placeholder {
+    color: rgba(107,124,147,0.4);
+    font-size: 11px;
+  }
+
+  .instructor-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .instructor-title {
+    font-family: 'Calibri', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ─── Corner marks ─── */
+  .corner-mark {
+    position: absolute;
+    z-index: 5;
+  }
+  .corner-mark.tl { top: 22px; left: 70px; }
+  .corner-mark.tr { top: 22px; right: 70px; }
+  .corner-mark.bl { bottom: 18px; left: 70px; }
+  .corner-mark.br { bottom: 18px; right: 70px; }
+
+  .corner-inner {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+  .cdot { width: 5px; height: 5px; border-radius: 50%; }
+  .cdot.gold { background: var(--gold); }
+  .cdot.blue { background: var(--soft-blue); opacity: 0.6; }
+
+  /* ─── Print ─── */
+  @media print {
+    body { background: none; padding: 0; margin: 0; }
+    .page {
+      width: 297mm;
+      height: 210mm;
+    }
+    @page { size: A4 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Fundo ornamental -->
+  <div class="bg-oval-tl"></div>
+  <div class="bg-oval-br"></div>
+
+  <!-- Watermark -->
+  <div class="watermark">AC</div>
+
+  <!-- Bordas internas ornamentais -->
+  <div class="inner-border"></div>
+  <div class="inner-border-2"></div>
+
+  <!-- Faixas laterais navy -->
+  <div class="navy-left"></div>
+  <div class="navy-right"></div>
+
+  <!-- Ornamentos nas faixas -->
+  <div class="left-ornament">
+    <div class="side-dot"></div>
+    <div class="side-line"></div>
+    <div class="side-dot"></div>
+    <div class="side-line"></div>
+    <div class="side-dot"></div>
+  </div>
+  <div class="right-ornament">
+    <div class="side-dot"></div>
+    <div class="side-line"></div>
+    <div class="side-dot"></div>
+    <div class="side-line"></div>
+    <div class="side-dot"></div>
+  </div>
+
+  <!-- Corner marks -->
+  <div class="corner-mark tl"><div class="corner-inner"><div class="cdot blue"></div><div class="cdot gold"></div></div></div>
+  <div class="corner-mark tr"><div class="corner-inner"><div class="cdot gold"></div><div class="cdot blue"></div></div></div>
+  <div class="corner-mark bl"><div class="corner-inner"><div class="cdot blue"></div><div class="cdot gold"></div></div></div>
+  <div class="corner-mark br"><div class="corner-inner"><div class="cdot gold"></div><div class="cdot blue"></div></div></div>
+
+  <!-- Conteúdo principal -->
+  <div class="main-content">
+    <div class="kicker-top">Alice Carvalho Nails</div>
+    <div class="cert-title">Certificado de Conclusão</div>
+
+    <div class="gold-divider">
+      <div class="gold-divider-line"></div>
+      <div class="gold-divider-dot"></div>
+      <div class="gold-divider-line"></div>
+    </div>
+
+    <div class="certifies-text">Certificamos que</div>
+
+    <div class="name-block">
+      <div class="name-field">
+        <span class="name-field-placeholder">Nome da aluna</span>
+      </div>
+    </div>
+
+    <div class="completion-text">concluiu com êxito a formação presencial</div>
+
+    <div class="formation-name">Além da Técnica</div>
+    <div class="formation-sub">Formação completa · Unhas · Marca Pessoal · Autonomia Profissional</div>
+
+  </div>
+
+  <!-- Rodapé do certificado -->
+  <div class="cert-footer">
+
+    <div class="footer-col">
+      <div class="footer-line"></div>
+      <div class="footer-label">Data de conclusão</div>
+      <div class="footer-value">
+        <span class="footer-value-placeholder">_______________ de 2026</span>
+      </div>
+    </div>
+
+    <div class="footer-col-center" style="flex: 1.2;">
+      <div class="footer-line" style="width:140px;"></div>
+      <div class="instructor-name">Alice Ferreira Carvalho</div>
+      <div class="instructor-title">Instrutora · Alice Carvalho Nails · Florianópolis – SC</div>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-line"></div>
+      <div class="footer-label">Assinatura da aluna</div>
+      <div class="footer-value">
+        <span class="footer-value-placeholder">&nbsp;</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

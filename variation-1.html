@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Era do Molde F1</title>
+  <style>
+    :root {
+      -webkit-text-size-adjust: 100%;
+      --direction-multiplier: 1;
+      --page-title-display: block;
+      --wp--preset--aspect-ratio--square: 1;
+      --wp--preset--aspect-ratio--4-3: 4/3;
+      --wp--preset--aspect-ratio--3-4: 3/4;
+      --wp--preset--aspect-ratio--3-2: 3/2;
+      --wp--preset--aspect-ratio--2-3: 2/3;
+      --wp--preset--aspect-ratio--16-9: 16/9;
+      --wp--preset--aspect-ratio--9-16: 9/16;
+      --wp--preset--color--black: #000000;
+      --wp--preset--color--cyan-bluish-gray: #abb8c3;
+      --wp--preset--color--white: #ffffff;
+      --wp--preset--color--pale-pink: #f78da7;
+      --wp--preset--color--vivid-red: #cf2e2e;
+      --wp--preset--color--luminous-vivid-orange: #ff6900;
+      --wp--preset--color--luminous-vivid-amber: #fcb900;
+      --wp--preset--color--light-green-cyan: #7bdcb5;
+      --wp--preset--color--vivid-green-cyan: #00d084;
+      --wp--preset--color--pale-cyan-blue: #8ed1fc;
+      --wp--preset--color--vivid-cyan-blue: #0693e3;
+      --wp--preset--color--vivid-purple: #9b51e0;
+      --wp--style--global--content-size: 800px;
+      --wp--style--global--wide-size: 1200px;
+      --wp--style--block-gap: 24px;
+      --e-global-color-primary: #6EC1E4;
+      --e-global-color-secondary: #54595F;
+      --e-global-color-text: #7A7A7A;
+      --e-global-color-accent: #61CE70;
+      --e-global-typography-primary-font-family: "Inter";
+      --e-global-typography-primary-font-weight: 600;
+      --e-global-typography-secondary-font-family: "Inter";
+      --e-global-typography-secondary-font-weight: 400;
+      --e-global-typography-text-font-family: "Inter";
+      --e-global-typography-text-font-weight: 400;
+      --e-global-typography-accent-font-family: "Inter";
+      --e-global-typography-accent-font-weight: 500;
+      --bg: #000000;
+      --panel: #111111;
+      --gold: #ab833d;
+      --gold-strong: #8f6b34;
+      --gold-soft: #d5c28e;
+      --cream: #e8ddc4;
+      --cream-dark: #d6c9a9;
+      --text: #efe3c4;
+      --muted: #d0c5ae;
+      --border: #443217;
+      --success: #5eac5a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: #000;
+      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: 302px;
+      background: var(--bg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 323px;
+      padding: 18px 14px 16px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(229, 191, 108, 0.3) 0, rgba(229, 191, 108, 0) 26%),
+        linear-gradient(90deg, #080808 0%, #111111 53%, #2c2218 100%);
+      border-bottom: 1px solid rgba(212, 194, 142, 0.24);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      right: 22px;
+      width: 86px;
+      height: 70px;
+      border: 8px solid var(--gold-soft);
+      border-bottom: 0;
+      clip-path: polygon(0 100%, 0 34%, 24% 34%, 39% 0, 50% 24%, 64% 0, 78% 34%, 100% 34%, 100% 100%, 79% 100%, 79% 53%, 60% 53%, 60% 100%, 39% 100%, 39% 53%, 22% 53%, 22% 100%);
+      opacity: 0.95;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 96px;
+      top: 54px;
+      width: 110px;
+      height: 190px;
+      border: 8px solid rgba(244, 229, 194, 0.95);
+      border-right-width: 0;
+      border-radius: 110px 0 0 110px;
+      z-index: 0;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: 155px;
+    }
+
+    .logo-wrap {
+      margin-bottom: 12px;
+      color: var(--gold-soft);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .logo-small {
+      display: block;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+    }
+
+    .logo-main {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-main strong {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .logo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 4px;
+      border: 1px solid rgba(231, 214, 161, 0.8);
+      border-radius: 4px;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 20px;
+      padding: 2px 8px;
+      border: 1px solid rgba(148, 116, 58, 0.55);
+      border-radius: 4px;
+      background: rgba(22, 22, 22, 0.9);
+      color: var(--cream-dark);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #d23b35;
+      box-shadow: 0 0 0 2px rgba(210, 59, 53, 0.12);
+    }
+
+    .badge-clock {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .badge-clock::before,
+    .badge-clock::after {
+      content: "";
+      position: absolute;
+      background: var(--gold);
+      left: 50%;
+      top: 50%;
+      transform-origin: top center;
+      border-radius: 1px;
+    }
+
+    .badge-clock::before {
+      width: 1px;
+      height: 3px;
+      transform: translate(-50%, -100%);
+    }
+
+    .badge-clock::after {
+      width: 2px;
+      height: 1px;
+      transform: translate(0, -50%);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #caa453;
+      font-size: 17px;
+      line-height: 1.14;
+      font-weight: 800;
+    }
+
+    .hero-copy p {
+      margin: 0 0 10px;
+      color: #f2e5c7;
+      font-size: 11px;
+      line-height: 1.32;
+    }
+
+    .form-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field,
+    .cta {
+      width: 100%;
+      border-radius: 2px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .field {
+      height: 26px;
+      border: 1px solid #5c4825;
+      background: #171717;
+      color: #ddd1b0;
+      padding: 0 8px;
+    }
+
+    .field::placeholder {
+      color: #8f8368;
+      opacity: 1;
+    }
+
+    .cta {
+      height: 30px;
+      border: 0;
+      background: linear-gradient(180deg, #a8844a 0%, #8b6834 100%);
+      color: #f3ead6;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .cta .arrow {
+      display: inline-block;
+      margin-left: 6px;
+      transform: translateY(-1px);
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: -1px;
+      top: 26px;
+      width: 150px;
+      height: 280px;
+      border-radius: 88px 0 0 88px;
+      overflow: hidden;
+      z-index: 1;
+      background: #17120d;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 58% 40%;
+      filter: saturate(0.92) brightness(0.9);
+    }
+
+    .brand-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 2px;
+      background: #c5ad74;
+      color: #443013;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      border-top: 1px solid #d8c28f;
+      border-bottom: 1px solid #8f6f37;
+    }
+
+    .brand-strip span {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      white-space: nowrap;
+      opacity: 0.95;
+    }
+
+    .brand-strip em {
+      font-style: normal;
+      font-size: 9px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      padding: 0 2px;
+      line-height: 1.05;
+    }
+
+    .intro {
+      padding: 66px 24px 58px;
+      text-align: center;
+      background: #000;
+    }
+
+    .intro h2 {
+      margin: 0 0 12px;
+      color: #e8dec5;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .intro p {
+      margin: 0 auto 20px;
+      max-width: 232px;
+      color: #ddd0ae;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #e4d5b2;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .learning {
+      padding: 0 0 30px;
+      background: #000;
+    }
+
+    .learning-title {
+      margin: 0;
+      padding: 0 34px 18px;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .learning-title .gold {
+      color: #c69947;
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-columns: 131px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 15px;
+      padding: 10px 0;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-thumb {
+      width: 131px;
+      height: 86px;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-left: 2px;
+    }
+
+    .feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-copy {
+      padding-right: 12px;
+    }
+
+    .feature-copy h3 {
+      margin: 0 0 6px;
+      color: #c59745;
+      font-size: 13px;
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    .feature-copy p {
+      margin: 0;
+      color: #ddd1b0;
+      font-size: 10px;
+      line-height: 1.42;
+    }
+
+    .mentor {
+      display: grid;
+      grid-template-columns: 1fr 173px;
+      min-height: 322px;
+      background: #e5dcc9;
+      color: #16110c;
+    }
+
+    .mentor-copy {
+      padding: 18px 10px 14px 0;
+      margin-left: 2px;
+    }
+
+    .mentor-copy h2 {
+      margin: 0 0 10px;
+      color: #1c140d;
+      font-size: 15px;
+      line-height: 0.98;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .mentor-copy p {
+      margin: 0 0 10px;
+      color: #1e1711;
+      font-size: 10px;
+      line-height: 1.32;
+    }
+
+    .mentor-copy ul {
+      margin: 8px 0 8px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mentor-copy li {
+      position: relative;
+      padding-left: 14px;
+      margin: 0 0 4px;
+      color: #23201a;
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .mentor-copy li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--success);
+      font-weight: 800;
+    }
+
+    .mentor-visual {
+      min-height: 322px;
+      overflow: hidden;
+    }
+
+    .mentor-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 72% 52%;
+    }
+
+    .footer {
+      padding: 11px 12px 14px;
+      background: #8d6c38;
+      color: #f0e3bf;
+      text-align: center;
+      font-size: 7px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="logo-wrap">
+          <span class="logo-small">NOVA ERA DO</span>
+          <span class="logo-main"><strong>MOLDE</strong> <span class="logo-pill">F1</span></span>
+        </div>
+
+        <div class="badges">
+          <span class="badge"><span class="badge-clock"></span>04 A 07 DE MAIO / 20H</span>
+          <span class="badge"><span class="badge-dot"></span>AO VIVO</span>
+        </div>
+
+        <h1>Reduza seu tempo em mesa pela metade com Molde F1 através do Método Zero Lixamento</h1>
+        <p>Enquanto a maioria continua no lixa lixa, você aprende em 4 aulas gratuitas o protocolo que acelera a sua mesa.</p>
+
+        <form class="form-stack">
+          <input class="field" type="text" placeholder="Digite seu nome e e-mail" aria-label="Digite seu nome e e-mail">
+          <input class="field" type="tel" placeholder="Digite seu telefone com DDD" aria-label="Digite seu telefone com DDD">
+          <button class="cta" type="submit">GARANTIR MINHA VAGA <span class="arrow">↗</span></button>
+        </form>
+      </div>
+
+      <div class="hero-visual">
+        <img src="assets/hero-portrait.png" alt="Elaine Miranda">
+      </div>
+    </section>
+
+    <section class="brand-strip" aria-label="Brand strip">
+      <span>MOLDE <em>F1</em></span>
+      <span>MOLDE <em>F1</em></span>
+      <span>MOLDE <em>F1</em></span>
+      <span>MOLDE <em>F1</em></span>
+    </section>
+
+    <section class="intro">
+      <h2>Existe unha e existe método...</h2>
+      <p>Sem método, você pode ser a melhor profissional do mundo e vai continuar lixando muito para ganhar pouco.</p>
+      <div class="eyebrow">SALVE ESSA DATA:</div>
+      <div class="badges" style="justify-content:center;">
+        <span class="badge"><span class="badge-clock"></span>04 A 07 DE MAIO / 20H</span>
+        <span class="badge"><span class="badge-dot"></span>AO VIVO</span>
+      </div>
+    </section>
+
+    <section class="learning">
+      <h2 class="learning-title">Nas 3 aulas da NOVA ERA DO <span class="gold">MOLDE F1, você vai aprender:</span></h2>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/card-nails-1.png" alt="Unhas com acabamento natural">
+        </div>
+        <div class="feature-copy">
+          <h3>Fazer unhas que saem do molde prontas.</h3>
+          <p>Suas alongamentos com aparência 100% natural e cutícula limpa, sem fixar, sem excesso e sem aquele aspecto artificial que denuncia o trabalho.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/card-nails-2.png" alt="Método zero lixamento">
+        </div>
+        <div class="feature-copy">
+          <h3>Método ZERO Lixamento.</h3>
+          <p>O protocolo exato que te mostra onde você errou antes mesmo da cliente perceber, sem refazer tudo ou perder material.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/card-elaine.png" alt="Elaine Miranda">
+        </div>
+        <div class="feature-copy">
+          <h3>Como cobrar mais caro fazendo menos esforço.</h3>
+          <p>Vou te mostrar como fazer pelo menos R$3.000 por mês com apenas 1 atendimento por dia.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="mentor">
+      <div class="mentor-copy">
+        <h2>VOCÊ VAI APRENDER DIRETAMENTE COMIGO, ELAINE MIRANDA</h2>
+        <p>Especialista em Molde F1 com acabamento natural, ZERO lixamento e mais de 50.000 alunas formadas.</p>
+        <p>Comecei minha carreira como manicure aos 9 anos e de lá para cá desenvolvi o Método ZERO Lixamento que mudou a forma de trabalhar com molde no Brasil.</p>
+        <p>Hoje, meu principal objetivo é te mostrar que é possível conquistar o mesmo que eu usando o método certo pra:</p>
+        <ul>
+          <li>Entregar um trabalho de excelência,</li>
+          <li>Reduzir seu tempo em mesa,</li>
+          <li>Cobrar mais e lotar a sua agenda.</li>
+        </ul>
+        <p>E é exatamente esse Método que vou compartilhar com você nas 4 aulas gratuitas da Nova Era do Molde F1.</p>
+      </div>
+      <div class="mentor-visual">
+        <img src="assets/bottom-elaine.png" alt="Elaine Miranda de uniforme">
+      </div>
+    </section>
+
+    <footer class="footer">Copyright © ELAINE MIRANDA - Política de Privacidade</footer>
+  </main>
+</body>
+</html>

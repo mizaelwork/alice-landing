@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alice Carvalho Nails - Variation 1</title>
+  <style>
+    :root {
+      --bg: #050608;
+      --panel: #101318;
+      --gold: #c59a4a;
+      --gold-soft: #e2c88a;
+      --cream: #ede2ca;
+      --cream-dark: #d8c59d;
+      --text: #f3ead6;
+      --muted: #d8ccb4;
+      --border: #43331b;
+      --teal: #0e4d52;
+      --teal-soft: #1f7e73;
+      --white-panel: #e8dfcf;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #333;
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: 302px;
+      background: var(--bg);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 322px;
+      padding: 18px 14px 16px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 74% 18%, rgba(197, 154, 74, 0.26) 0, rgba(197, 154, 74, 0) 26%),
+        linear-gradient(90deg, #050608 0%, #0f1319 52%, #1f1913 100%);
+      border-bottom: 1px solid rgba(226, 200, 138, 0.25);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      width: 88px;
+      height: 72px;
+      border: 8px solid var(--gold-soft);
+      border-bottom: 0;
+      clip-path: polygon(0 100%, 0 34%, 24% 34%, 39% 0, 50% 24%, 64% 0, 78% 34%, 100% 34%, 100% 100%, 79% 100%, 79% 53%, 60% 53%, 60% 100%, 39% 100%, 39% 53%, 22% 53%, 22% 100%);
+      opacity: 0.95;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 92px;
+      top: 58px;
+      width: 112px;
+      height: 188px;
+      border: 8px solid rgba(244, 229, 194, 0.92);
+      border-right-width: 0;
+      border-radius: 110px 0 0 110px;
+      z-index: 0;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: 156px;
+    }
+
+    .logo-wrap {
+      margin-bottom: 12px;
+      color: var(--gold-soft);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .logo-small {
+      display: block;
+      font-size: 8px;
+      letter-spacing: 0.18em;
+    }
+
+    .logo-main {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-main strong {
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .logo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 20px;
+      padding: 0 5px;
+      border: 1px solid rgba(231, 214, 161, 0.8);
+      border-radius: 4px;
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 20px;
+      padding: 2px 8px;
+      border: 1px solid rgba(148, 116, 58, 0.55);
+      border-radius: 4px;
+      background: rgba(19, 22, 28, 0.92);
+      color: var(--cream-dark);
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #c23d35;
+    }
+
+    .badge-clock {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .badge-clock::before,
+    .badge-clock::after {
+      content: "";
+      position: absolute;
+      background: var(--gold);
+      left: 50%;
+      top: 50%;
+      border-radius: 1px;
+    }
+
+    .badge-clock::before {
+      width: 1px;
+      height: 3px;
+      transform: translate(-50%, -100%);
+    }
+
+    .badge-clock::after {
+      width: 2px;
+      height: 1px;
+      transform: translate(0, -50%);
+    }
+
+    h1 {
+      margin: 0 0 9px;
+      color: var(--gold);
+      font-size: 17px;
+      line-height: 1.12;
+      font-weight: 800;
+    }
+
+    .hero-copy p {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 10px;
+      line-height: 1.38;
+    }
+
+    .cta-stack {
+      display: grid;
+      gap: 6px;
+    }
+
+    .cta-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 26px;
+      border-radius: 2px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cta-link.secondary {
+      border: 1px solid #5c4825;
+      background: #171717;
+      color: #ddd1b0;
+    }
+
+    .cta-link.primary {
+      min-height: 30px;
+      border: 0;
+      background: linear-gradient(180deg, #a8844a 0%, #8b6834 100%);
+      color: #f3ead6;
+    }
+
+    .hero-visual {
+      position: absolute;
+      right: -3px;
+      top: 28px;
+      width: 150px;
+      height: 278px;
+      border-radius: 88px 0 0 88px;
+      overflow: hidden;
+      z-index: 1;
+      background: #17120d;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 18%;
+      filter: saturate(0.92) brightness(0.93);
+    }
+
+    .brand-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 3px;
+      background: #c5ad74;
+      color: #443013;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      border-top: 1px solid #d8c28f;
+      border-bottom: 1px solid #8f6f37;
+    }
+
+    .brand-strip span {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .brand-strip em {
+      font-style: normal;
+      font-size: 8px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      padding: 0 2px;
+      line-height: 1.05;
+    }
+
+    .intro {
+      padding: 62px 24px 54px;
+      text-align: center;
+      background: #000;
+    }
+
+    .intro h2 {
+      margin: 0 0 12px;
+      color: var(--cream);
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 800;
+    }
+
+    .intro p {
+      margin: 0 auto 20px;
+      max-width: 230px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--cream-dark);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .learning {
+      padding: 0 0 30px;
+      background: #000;
+    }
+
+    .learning-title {
+      margin: 0;
+      padding: 0 28px 18px;
+      color: #ffffff;
+      font-size: 13px;
+      line-height: 1.28;
+      font-weight: 800;
+    }
+
+    .learning-title .gold {
+      color: var(--gold);
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-columns: 131px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 15px;
+      padding: 10px 0;
+      background: #0a0a0a;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-thumb {
+      width: 131px;
+      height: 86px;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-left: 2px;
+      background: #111;
+    }
+
+    .feature-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-copy {
+      padding-right: 12px;
+    }
+
+    .feature-copy h3 {
+      margin: 0 0 6px;
+      color: var(--gold);
+      font-size: 13px;
+      line-height: 1.16;
+      font-weight: 800;
+    }
+
+    .feature-copy p {
+      margin: 0;
+      color: #ddd1b0;
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .mentor {
+      display: grid;
+      grid-template-columns: 1fr 173px;
+      min-height: 320px;
+      background: var(--white-panel);
+      color: #16110c;
+    }
+
+    .mentor-copy {
+      padding: 18px 10px 14px 4px;
+    }
+
+    .mentor-copy h2 {
+      margin: 0 0 10px;
+      color: #1c140d;
+      font-size: 15px;
+      line-height: 0.98;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .mentor-copy p {
+      margin: 0 0 10px;
+      color: #1e1711;
+      font-size: 9px;
+      line-height: 1.34;
+    }
+
+    .mentor-copy ul {
+      margin: 8px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .mentor-copy li {
+      position: relative;
+      padding-left: 14px;
+      margin: 0 0 4px;
+      color: #23201a;
+      font-size: 9px;
+      line-height: 1.28;
+    }
+
+    .mentor-copy li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--teal-soft);
+      font-weight: 800;
+    }
+
+    .mentor-visual {
+      min-height: 320px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f3ead8 0%, #e9ddc8 100%);
+    }
+
+    .mentor-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 55% 18%;
+    }
+
+    .footer {
+      padding: 11px 12px 14px;
+      background: #8d6c38;
+      color: #f0e3bf;
+      text-align: center;
+      font-size: 7px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="logo-wrap">
+          <span class="logo-small">ALICE CARVALHO</span>
+          <span class="logo-main"><strong>NAILS</strong> <span class="logo-pill">VIP</span></span>
+        </div>
+
+        <div class="badges">
+          <span class="badge"><span class="badge-clock"></span>CURSO ONLINE</span>
+          <span class="badge"><span class="badge-dot"></span>2 FORMACOES</span>
+        </div>
+
+        <h1>Aprenda blindagem e molde F1 com praticidade para viver das unhas com mais liberdade.</h1>
+        <p>Especialista em te ensinar unhas com pratica de verdade para voce aplicar rapido, reduzir tempo de mesa e transformar sua rotina.</p>
+
+        <div class="cta-stack">
+          <a class="cta-link secondary" href="https://pay.cakto.com.br/ohoz79b_846247">Blindagem Estruturada 9x de R$ 5,04</a>
+          <a class="cta-link secondary" href="https://pay.cakto.com.br/u7d4knp">Molde Express R$ 27,90 a vista</a>
+          <a class="cta-link primary" href="https://wa.me/message/QMVSU4E7AU76F1">FALAR COM A ALICE</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="assets/alice-portrait-clean.png" alt="Alice Carvalho">
+      </div>
+    </section>
+
+    <section class="brand-strip" aria-label="Brand strip">
+      <span>BLINDAGEM <em>GEL</em></span>
+      <span>MOLDE <em>F1</em></span>
+      <span>CURSOS <em>VIP</em></span>
+      <span>ALICE <em>NAILS</em></span>
+    </section>
+
+    <section class="intro">
+      <h2>Existe curso e existe metodo...</h2>
+      <p>Com a Alice, voce encontra duas formacoes praticas pensadas para te dar tecnica, seguranca e resultado real no atendimento.</p>
+      <div class="eyebrow">FOCO DA PAGINA</div>
+      <div class="badges" style="justify-content:center;">
+        <span class="badge"><span class="badge-clock"></span>ALONGAMENTO E BLINDAGEM</span>
+        <span class="badge"><span class="badge-dot"></span>ANUNCIOS</span>
+      </div>
+    </section>
+
+    <section class="learning">
+      <h2 class="learning-title">Com a <span class="gold">Alice Carvalho Nails</span>, voce encontra duas ofertas centrais:</h2>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/alice-reel-nails.png" alt="Blindagem em gel">
+        </div>
+        <div class="feature-copy">
+          <h3>Curso Pratico Blindagem Estruturada.</h3>
+          <p>Passo a passo da blindagem, preparacao das unhas, lixamento tecnico, polimento, manutencao e bonus para acelerar a aplicacao no dia a dia.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/alice-molde-nails.png" alt="Pratico Molde Express">
+        </div>
+        <div class="feature-copy">
+          <h3>Curso Pratico Molde Express.</h3>
+          <p>Molde F1, anatomia das unhas, formatos, brocas, curvatura, finalizacao, manutencao e aulas gravadas para voce revisar sempre.</p>
+        </div>
+      </article>
+
+      <article class="feature-card">
+        <div class="feature-thumb">
+          <img src="assets/alice-quote-post.png" alt="Posicionamento da Alice">
+        </div>
+        <div class="feature-copy">
+          <h3>Praticidade para voce viver da profissao.</h3>
+          <p>Atendimento no WhatsApp, perfil ativo no Instagram, localizacao em Florianopolis e uma comunicacao que une tecnica, liberdade e consistencia.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="mentor">
+      <div class="mentor-copy">
+        <h2>VOCE VAI APRENDER COM A ALICE CARVALHO</h2>
+        <p>Nail Designer focada em alongamento de unhas e blindagem, com conteudo pratico para quem quer resultado aplicavel e mais autonomia na carreira.</p>
+        <p>Direto de Ingleses, Florianopolis, ela compartilha cursos, atendimentos e reflexoes para ajudar outras mulheres a crescerem com mais seguranca.</p>
+        <ul>
+          <li>205 posts publicados no perfil.</li>
+          <li>1.517 seguidores acompanhando o trabalho.</li>
+          <li>Foco em blindagem, durabilidade e molde F1.</li>
+          <li>Atendimento e suporte pelo WhatsApp.</li>
+        </ul>
+        <p>Os dois cursos desta pagina usam links reais de checkout e foram pensados para anuncios diretos da Alice Carvalho Nails.</p>
+      </div>
+      <div class="mentor-visual">
+        <img src="assets/alice-portrait-clean.png" alt="Alice Carvalho">
+      </div>
+    </section>
+
+    <footer class="footer">alicecarvalhonails.com.br • WhatsApp • Instagram • Cursos Online</footer>
+  </main>
+</body>
+</html>
