@@ -765,12 +765,16 @@
       overflow: hidden;
       background: var(--navy-deep);
     }
-    .quote-card .q-photo img {
+    .quote-card .q-photo img,
+    .quote-card .q-photo video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: 50% 28%;
+      display: block;
     }
+    .quote-card.with-video .q-photo { aspect-ratio: 9 / 12; background: #000; }
+    .quote-card.with-video .q-photo video { object-position: center; }
 
     /* === About === */
     .about { background: var(--ice-blue); }
@@ -954,13 +958,13 @@
 
         <div class="feedback-feature reveal">
           <div class="feedback-video">
-            <video src="midias/feedback-marquiele.mp4" controls preload="metadata" playsinline></video>
+            <video src="midias/feedback-maria-clara.mp4" controls preload="metadata" playsinline></video>
           </div>
           <div class="feedback-copy">
             <span class="kicker">Depoimento em vídeo</span>
             <h3 class="display">A prática que <em>transforma a mesa</em> da aluna em rotina lucrativa.</h3>
-            <p>A Marquiele compartilha o que mudou no atendimento dela depois das formações — sem roteiro, sem teatro. É o que a Alice gosta de ouvir: aluna que aplica e percebe a diferença na cadeira.</p>
-            <span class="feedback-meta">Marquiele · aluna</span>
+            <p>A Maria Clara compartilha o que mudou no atendimento dela depois das formações — sem roteiro, sem teatro. É o que a Alice gosta de ouvir: aluna que aplica e percebe a diferença na cadeira.</p>
+            <span class="feedback-meta">Maria Clara · aluna</span>
           </div>
         </div>
       </div>
@@ -972,7 +976,7 @@
         <div class="social-head reveal">
           <span class="kicker">O que dizem</span>
           <h2 class="display">Mais alunas. <em>Mesma transformação.</em></h2>
-          <p class="lead">A Marquiele falou em vídeo. Aqui embaixo, mais três que viveram a mesma virada.</p>
+          <p class="lead">A Maria Clara falou em vídeo. Aqui embaixo, mais três que viveram a mesma virada.</p>
         </div>
 
         <div class="testimonials">
@@ -994,12 +998,13 @@
               <span class="who-role">Turma presencial</span>
             </div>
           </div>
-          <div class="quote-card reveal">
+          <div class="quote-card with-photo with-video reveal">
+            <div class="q-photo"><video src="midias/feedback-marquiele.mp4" controls preload="metadata" playsinline></video></div>
             <span class="q-mark">&ldquo;</span>
-            <blockquote>A Alice não ensina só unha. Ela ensina como ser tratada como profissional de verdade — postura, atendimento, presença.</blockquote>
+            <blockquote>Sem roteiro, sem teatro: a Marquiele conta o que mudou no atendimento dela depois de aplicar o que aprendeu com a Alice.</blockquote>
             <div class="who">
-              <span class="who-name">Aluna · Presencial</span>
-              <span class="who-role">Florianópolis</span>
+              <span class="who-name">Marquiele · aluna</span>
+              <span class="who-role">Depoimento em vídeo</span>
             </div>
           </div>
         </div>
